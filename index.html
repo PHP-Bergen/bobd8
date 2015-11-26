@@ -40,6 +40,203 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+				<section>
+					<h1>Drupal 8</h1>
+					<h2>@steinmb</h2>
+				</section>
+
+				<section>
+					<h2>Warning</h2>
+					<img src="images/me.png"/>
+				</section>
+
+				<section>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/yOggQwNFl3w" frameborder="0" allowfullscreen></iframe>
+				</section>
+
+				<!--About Drupal-->
+				<section>
+					<section>
+						<h2>Drupal</h2>
+						Content Management Framework (CMF), Product, Framework, or Platform?.
+					</section>
+					<section>
+						<h2>Nesten fem år</h2>
+						<img src="images/born.png"/>
+					</section>
+				</section>
+
+				<!--Om drupal.org-->
+				<section>
+					<section>
+						<h2>Drupal org</h2>
+						<a href="https://localize.drupal.org/">localize.drupal.org</a>
+					</section>
+					<section>
+						<h2>Drupal testing framework sentralt og lokalt</h2>
+						<a href="https://www.drupal.org/node/3060/qa">Go bots!</a>
+						<a href="https://dispatcher.drupalci.org/">Jenkins</a>
+					</section>
+					<section>Drupal sikkerhet. Security team</section>
+					<section>
+						<h2>Moduler
+						<br>themes
+						<br>Distro</h2>
+					</section>
+					<section>
+						<h2>Drupalcon</h2>
+						<img src="./images/amsterdam.jpg"/>
+					</section>
+					<section>
+						<h2>Sprints</h2>
+						<img src="./images/sprint.png"/>
+					</section>
+				</section>
+
+				<section>
+					<h2>Noen få eksempler</h2>
+					<ul>
+						<li>Human Rights Watch</li>
+						<li>The White House.</li>
+						<li>Australia</li>
+						<li>The GRAMMYs</li>
+						<li>Lokalt: UiB, På Høyden</li>
+						<li>Aller pressen</li>
+						<li>Weather.com, Turner Broadcasting, The Economist, Fox News</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Installer</h2>
+					<a href="https://www.drupal.org/requirements">Krav</a>
+				</section>
+
+				<!--Konsepter-->
+				<section>
+					<section>
+						<h2>Entity</h2>
+						<ul>
+							<li>Nodes</li>
+							<li>Users</li>
+							<li>Taxonomy Terms</li>
+							<li>Comments</li>
+							<li>Custom Blocks</li>
+						</ul>
+					</section>
+					<section><h2>Entity Bundles</h2></section>
+					<section><h2>Fields</h2></section>
+					<section><h2>Configuration Entities (CRUD)</h2></section>
+				</section>
+
+				<!--Datalagring-->
+				<section>
+					<section><h2>Lagring av data</h2></section>
+					<section>Variables til configuration system</section>
+					<section>configuration entity (CRUD)</section>
+					<section>YAML</section>
+					<section>Tempstore</section>
+					<section>Drupal State API. System states. Hver forespørsel gir et database oppslag. Disse skal ikke ut i deploy systemer. Ingen serialization.
+						Sitter på toppen av Key/Value API.</section>
+				</section>
+
+				<section>
+					<h1>Theme system</h1>
+					skriv markup ikke php
+				</section>
+
+				<section>
+					<section>
+						<h2>Twig</h2>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/Pv53rw_J_ak" frameborder="0" allowfullscreen></iframe>
+					</section>
+
+					<section>
+						<h2>Sikker og rask</h2>
+						<pre>
+							<code data-trim>
+								{{ page.primary_menu }}
+							</code>
+						</pre>
+						<h2>PHP template</h2>
+						<pre>
+							<code data-trim>
+    <?php if ($main_menu || $secondary_menu): ?>
+      <div id="navigation"><div class="section">
+        <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
+        <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
+      </div></div> <!-- /.section, /#navigation -->
+    <?php endif; ?>
+
+							</code>
+						</pre>
+
+					</section>
+
+					<section>
+						<h2>?</h2>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Config managment</h2>
+					Enkle diff, git, git hooks.
+				</section>
+
+				<section>
+					<h2>REST</h2>
+				</section>
+
+				<section>
+					<h2>Objects</h2>
+					<ul>
+						<li>PSR standarder</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Symfony 2/3 komponenter</h2>
+					Proudly-Invented Elsewhere
+				</section>
+
+				<section>
+					<h2>Eksempler andre komponenter</h2>
+					<ul>
+						<li>Composer</li>
+						<li>Doctrine - Source annotation</li>
+						<li>backbone.js og underscore.js</li>
+						<li>Guzzle</li>
+					</ul>
+				</section>
+				<section>
+					Eksempel fra Guzzle
+					<pre><code>
+$client = \Drupal::httpClient();
+$request = $client->createRequest('GET', $feed->url);
+$request->addHeader('If-Modified-Since', gmdate(DATE_RFC1123, $last_fetched));
+					 </code></pre>
+					Drupal 7
+					<pre><code>
+$headers = array('If-Modified-Since' => gmdate(DATE_RFC1123, $last_fetched));
+$result = drupal_http_request($feed->url, array('headers' => $headers));
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Drush</h2>
+				</section>
+
+				<section>
+					<section><h2>Oppgradere</h2></section>
+					<section>
+						<h2>Migrate</h2>
+					</section>
+				</section>
+
+				<section>Tid for spørsmål</section>
+
+				<section></section>
+
 
 
 			</div>
